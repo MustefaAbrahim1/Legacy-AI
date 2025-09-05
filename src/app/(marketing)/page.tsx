@@ -131,8 +131,25 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Showcase & Testimonials Section */}
-      <section id="showcase" className="py-24 bg-background overflow-hidden">
+      {/* Showcase Section */}
+      <section id="showcase" className="py-24 bg-accent/50">
+        <div className="container">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="font-headline text-3xl md:text-4xl font-bold">Beautiful Designs, Enduring Tributes</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Explore a collection of our beautifully crafted memorial books.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <Image src="https://picsum.photos/600/800" alt="Showcase book 1" width={600} height={800} className="rounded-lg shadow-xl" data-ai-hint="book design" />
+            <Image src="https://picsum.photos/600/800" alt="Showcase book 2" width={600} height={800} className="rounded-lg shadow-xl" data-ai-hint="book layout" />
+            <Image src="https://picsum.photos/600/800" alt="Showcase book 3" width={600} height={800} className="rounded-lg shadow-xl" data-ai-hint="book cover design" />
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="feedback" className="py-24 bg-background overflow-hidden">
         <div className="container">
           <div className="text-center space-y-4 mb-16">
             <h2 className="font-headline text-3xl md:text-4xl font-bold">Loved by Families Like Yours</h2>
