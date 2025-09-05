@@ -29,6 +29,7 @@ const tiers = [
       { text: 'Full book web preview', included: true },
       { text: 'Access to all themes', included: true },
       { text: 'Full book generation (up to 50 pages)', included: true },
+      { text: 'Low-resolution PDF download', included: true },
       { text: 'Editable project link', included: false },
       { text: 'High-resolution PDF download', included: false },
     ],
@@ -94,7 +95,7 @@ export default function PricingPage() {
                       <span className="font-semibold col-span-2">{feature.text}</span> :
                       <>
                         {feature.included ? <Check className="h-5 w-5 text-primary mr-3 flex-shrink-0 mt-1" /> : <X className="h-5 w-5 text-muted-foreground mr-3 flex-shrink-0 mt-1" />}
-                        <span className={feature.included ? 'text-muted-foreground' : 'text-muted-foreground line-through'}>{feature.text}</span>
+                        <span className={!feature.included ? 'text-muted-foreground line-through' : ''}>{feature.text}</span>
                       </>
                     }
                   </li>
