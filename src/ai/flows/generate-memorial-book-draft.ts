@@ -15,6 +15,7 @@ const GenerateMemorialBookDraftInputSchema = z.object({
   content: z
     .string()
     .describe("The content to be used for generating the memorial book draft."),
+  photos: z.array(z.string().url()).optional().describe("A list of photo data URIs to include in the memorial book. Expected format: 'data:<mimetype>;base64,<encoded_data>'."),
 });
 export type GenerateMemorialBookDraftInput = z.infer<typeof GenerateMemorialBookDraftInputSchema>;
 
@@ -34,7 +35,12 @@ const prompt = ai.definePrompt({
   input: {schema: GenerateMemorialBookDraftInputSchema},
   output: {schema: GenerateMemorialBookDraftOutputSchema},
   prompt: `You are an AI assistant that generates memorial book drafts from uploaded content.
-\nGenerate a draft of the memorial book using the following content:\n\nContent: {{{content}}}`,
+\nGenerate a draft of the memorial book using the following content and photos:\n\nContent: {{{content}}}{{#if photos}}
+\nPhotos:
+{{#each photos}}
+- {{media url=this}}
+{{/each}}
+{{/if}}`,
 });
 
 const generateMemorialBookDraftFlow = ai.defineFlow(

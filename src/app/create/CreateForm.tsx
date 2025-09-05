@@ -3,12 +3,13 @@
 import { useFormState, useFormStatus } from 'react-dom';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Terminal, UploadCloud, Trash2 } from 'lucide-react';
+import { Terminal, Trash2 } from 'lucide-react';
 import { createBookAction, type CreateState } from './actions';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -23,10 +24,10 @@ function SubmitButton() {
 }
 
 export default function CreateForm() {
-  const initialState: CreateState = { error: null, previewHtml: null };
+  const initialState: CreateState = { error: null, previewHtml: null, photos: [] };
   const [state, formAction] = useFormState(createBookAction, initialState);
   const previewRef = useRef<HTMLDivElement>(null);
-  const [photos, setPhotos] = useState<string[]>([]);
+  const [photoFiles, setPhotoFiles] = useState<File[]>([]);
 
   useEffect(() => {
     if (state.previewHtml && previewRef.current) {
@@ -37,13 +38,12 @@ export default function CreateForm() {
   const handlePhotoUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       const files = Array.from(event.target.files);
-      const photoUrls = files.map(file => URL.createObjectURL(file));
-      setPhotos(prev => [...prev, ...photoUrls]);
+      setPhotoFiles(prev => [...prev, ...files]);
     }
   };
   
   const removePhoto = (index: number) => {
-    setPhotos(prev => prev.filter((_, i) => i !== index));
+    setPhotoFiles(prev => prev.filter((_, i) => i !== index));
   };
 
 
@@ -58,12 +58,12 @@ export default function CreateForm() {
         />
 
         <div className="space-y-4">
-          <Label htmlFor="photos">Upload Photos (Premium Feature)</Label>
+          <Label htmlFor="photos">Upload Photos (Advance & Expert Plans)</Label>
           <Input id="photos" name="photos" type="file" multiple onChange={handlePhotoUpload} accept="image/*" />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {photos.map((photo, index) => (
+            {photoFiles.map((photo, index) => (
               <div key={index} className="relative group">
-                <Image src={photo} alt={`upload preview ${index}`} width={200} height={200} className="rounded-md object-cover aspect-square" />
+                <Image src={URL.createObjectURL(photo)} alt={`upload preview ${index}`} width={200} height={200} className="rounded-md object-cover aspect-square" />
                 <Button variant="destructive" size="icon" className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity" onClick={() => removePhoto(index)}>
                   <Trash2 className="h-4 w-4" />
                 </Button>

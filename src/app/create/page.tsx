@@ -29,7 +29,7 @@ export default function CreatePage() {
           <div className="text-center space-y-4 mb-12">
             <h1 className="font-headline text-4xl md:text-5xl font-bold">Create a Memorial Book</h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Paste an obituary, stories, or any collection of text below. Upload photos to be included. Our AI will craft a beautiful draft for your memorial book.
+              Paste an obituary, stories, or any collection of text below. Upload photos to be included (available on Advance and Expert plans). Our AI will craft a beautiful draft for your memorial book.
             </p>
           </div>
           <CreateForm />
