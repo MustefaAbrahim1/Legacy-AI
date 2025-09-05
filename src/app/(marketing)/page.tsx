@@ -2,7 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { UploadCloud, Bot, Edit } from 'lucide-react';
+import { UploadCloud, Bot, Edit, Star } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const features = [
   {
@@ -17,8 +19,35 @@ const features = [
   },
   {
     icon: <Edit className="h-10 w-10 text-primary" />,
-    title: '3. Edit & Purchase',
+    title: '3. Edit & Finalize',
     description: 'Review the AI-generated draft, make any personal edits, and choose from elegant themes before ordering your professionally printed book.',
+  },
+];
+
+const testimonials = [
+  {
+    name: 'Sarah L.',
+    plan: 'Advance',
+    avatar: 'SL',
+    image: 'https://picsum.photos/150/150',
+    imageHint: 'woman portrait',
+    feedback: "The AI writer captured my father's spirit perfectly. It was like it knew him. The process was so easy during a difficult time. The final book is something our family will treasure forever.",
+  },
+  {
+    name: 'Michael B.',
+    plan: 'Expert',
+    avatar: 'MB',
+    image: 'https://picsum.photos/150/150',
+    imageHint: 'man portrait',
+    feedback: "I was skeptical about an AI writing something so personal, but I was blown away. It took all our scattered stories and created a beautiful, cohesive narrative. The Expert plan was worth every penny for the extra design control.",
+  },
+  {
+    name: 'Jessica & Tom H.',
+    plan: 'Basic',
+    avatar: 'JH',
+    image: 'https://picsum.photos/150/150',
+    imageHint: 'couple portrait',
+    feedback: "We just wanted a simple, elegant way to remember our grandmother. The Basic plan was perfect. It gave us a wonderful starting point, and we were able to create a lovely tribute without much fuss.",
   },
 ];
 
@@ -79,7 +108,43 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Showcase Section */}
+      {/* Showcase & Testimonials Section */}
+      <section id="showcase" className="py-24 bg-background">
+        <div className="container">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="font-headline text-3xl md:text-4xl font-bold">Loved by Families Like Yours</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              See what others have created and hear about their experiences.
+            </p>
+          </div>
+          <div className="grid lg:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <Card key={testimonial.name} className="flex flex-col fade-in" style={{ animationDelay: `${index * 150}ms` }}>
+                <CardContent className="pt-6 flex-grow">
+                  <div className="flex items-center mb-4">
+                    <Avatar className="h-12 w-12 mr-4">
+                      <AvatarImage src={testimonial.image} alt={testimonial.name} data-ai-hint={testimonial.imageHint} />
+                      <AvatarFallback>{testimonial.avatar}</AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <h3 className="font-semibold">{testimonial.name}</h3>
+                      <Badge variant="secondary">Used {testimonial.plan} Plan</Badge>
+                    </div>
+                  </div>
+                  <div className="flex mb-2">
+                    {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />)}
+                  </div>
+                  <blockquote className="text-muted-foreground italic border-l-2 pl-4">
+                    "{testimonial.feedback}"
+                  </blockquote>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Themes Section */}
       <section className="py-24 bg-accent/50">
         <div className="container grid lg:grid-cols-2 gap-12 items-center">
           <div className="order-2 lg:order-1 fade-in">

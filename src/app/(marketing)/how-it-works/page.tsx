@@ -6,7 +6,7 @@ const steps = [
   {
     step: 1,
     title: "Upload Your Content",
-    description: "Begin by gathering all the precious memories. This can be anything from a full obituary, personal anecdotes, heartfelt stories, poems, to a collection of photographs. Our system is designed to handle text and images, allowing you to create a rich and comprehensive tribute. Simply copy and paste the text into our editor.",
+    description: "Begin by gathering all the precious memories. This can be anything from a full obituary, personal anecdotes, heartfelt stories, and poems. Our system is designed to handle text and images, allowing you to create a rich and comprehensive tribute. Simply paste the text and upload photos in our editor.",
     image: "https://picsum.photos/800/600",
     imageHint: "document upload",
   },
@@ -19,8 +19,8 @@ const steps = [
   },
   {
     step: 3,
-    title: "Purchase and Edit",
-    description: "Review the AI-generated preview. If you're happy with the draft, you can choose a pricing plan to unlock the full book. You'll receive an editable project link for a leading print-on-demand platform where you can make final adjustments, perfect the layout, and order your beautifully printed copies.",
+    title: "Review, Edit, and Finalize",
+    description: "Review the AI-generated preview. If you're happy with the draft, you can choose a pricing plan to unlock the full book. You'll receive an editable project link for a leading print-on-demand platform where you can make final adjustments, perfect the layout, and order your beautifully printed copies. Or, download a high-resolution PDF to print yourself.",
     image: "https://picsum.photos/800/600",
     imageHint: "book printing",
   },

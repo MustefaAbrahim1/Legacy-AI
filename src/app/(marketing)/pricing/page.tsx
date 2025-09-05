@@ -1,38 +1,71 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check } from 'lucide-react';
+import { Check, X } from 'lucide-react';
 
 const tiers = [
   {
-    name: 'Starter Preview',
-    price: 'Free',
+    name: 'Free',
+    price: '$0',
     priceDescription: 'to get started',
     features: [
-      'AI-powered draft generation',
-      'Preview of the first few pages',
-      'One design theme',
-      'Web-based preview link',
+      { text: 'AI-powered draft generation', included: true },
+      { text: 'Web-based preview of first 2 pages', included: true },
+      { text: 'Basic theme', included: true },
+      { text: 'Full book generation', included: false },
+      { text: 'Editable project link', included: false },
+      { text: 'High-resolution PDF download', included: false },
     ],
     cta: 'Start for Free',
     href: '/create',
     primary: false,
   },
   {
-    name: 'Premium Full Book',
-    price: '$49',
+    name: 'Basic',
+    price: '$10',
     priceDescription: 'one-time payment',
     features: [
-      'Everything in Starter, plus:',
-      'Full book generation (up to 200 pages)',
-      'Access to all premium themes',
-      'Editable project on POD platform',
-      'High-resolution PDF for printing',
-      'Priority support',
+      { text: 'AI-powered draft generation', included: true },
+      { text: 'Full book web preview', included: true },
+      { text: 'Access to all themes', included: true },
+      { text: 'Full book generation (up to 50 pages)', included: true },
+      { text: 'Editable project link', included: false },
+      { text: 'High-resolution PDF download', included: false },
     ],
-    cta: 'Go Premium',
+    cta: 'Get Started',
+    href: '/create',
+    primary: false,
+  },
+  {
+    name: 'Advance',
+    price: '$30',
+    priceDescription: 'one-time payment',
+    features: [
+      { text: 'Everything in Basic, plus:', included: true, isTitle: true },
+      { text: 'Full book generation (up to 150 pages)', included: true },
+      { text: 'Upload and place photos', included: true },
+      { text: 'Editable project on POD platform', included: true },
+      { text: 'High-resolution PDF for printing', included: true },
+      { text: 'Priority support', included: true },
+    ],
+    cta: 'Choose Advance',
     href: '/create',
     primary: true,
+  },
+  {
+    name: 'Expert',
+    price: '$50',
+    priceDescription: 'one-time payment',
+    features: [
+      { text: 'Everything in Advance, plus:', included: true, isTitle: true },
+      { text: 'Full book generation (unlimited pages)', included: true },
+      { text: 'Advanced editing & layout control', included: true },
+      { text: 'One-on-one design consultation', included: true },
+      { text: 'Hardcover print option facilitation', included: true },
+    ],
+    cta: 'Go Expert',
+    href: '/create',
+    primary: false,
   },
 ];
 
@@ -45,20 +78,25 @@ export default function PricingPage() {
           Choose the plan that's right for you. Start with a free preview and upgrade when you're ready.
         </p>
       </div>
-      <div className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto items-start">
+      <div className="grid lg:grid-cols-4 gap-6 max-w-7xl mx-auto items-stretch">
         {tiers.map((tier) => (
-          <Card key={tier.name} className={tier.primary ? 'border-primary shadow-2xl' : ''}>
+          <Card key={tier.name} className={`flex flex-col ${tier.primary ? 'border-primary shadow-2xl' : ''}`}>
             <CardHeader className="text-center">
               <CardTitle className="font-headline text-3xl">{tier.name}</CardTitle>
               <p className="text-4xl font-bold">{tier.price}</p>
               <CardDescription>{tier.priceDescription}</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-4 flex-grow">
               <ul className="space-y-3">
                 {tier.features.map((feature) => (
-                  <li key={feature} className="flex items-start">
-                    <Check className="h-5 w-5 text-primary mr-3 flex-shrink-0 mt-1" />
-                    <span className="text-muted-foreground">{feature}</span>
+                  <li key={feature.text} className="flex items-start">
+                     {feature.isTitle ? 
+                      <span className="font-semibold col-span-2">{feature.text}</span> :
+                      <>
+                        {feature.included ? <Check className="h-5 w-5 text-primary mr-3 flex-shrink-0 mt-1" /> : <X className="h-5 w-5 text-muted-foreground mr-3 flex-shrink-0 mt-1" />}
+                        <span className={feature.included ? 'text-muted-foreground' : 'text-muted-foreground line-through'}>{feature.text}</span>
+                      </>
+                    }
                   </li>
                 ))}
               </ul>
