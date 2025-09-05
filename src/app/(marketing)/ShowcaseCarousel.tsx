@@ -23,22 +23,22 @@ export function ShowcaseCarousel() {
             loop: true,
             align: "start",
         }}
-        className="w-full"
+        className="w-full max-w-sm sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl mx-auto"
         >
-        <CarouselContent>
-            <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+        <CarouselContent className="-ml-4">
+            <CarouselItem className="pl-4 md:basis-1/2 lg:basis-1/3">
                 <Image src="https://picsum.photos/600/800" alt="Showcase book 1" width={600} height={800} className="rounded-lg shadow-xl" data-ai-hint="book design" />
             </CarouselItem>
-            <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+            <CarouselItem className="pl-4 md:basis-1/2 lg:basis-1/3">
             <Image src="https://picsum.photos/600/800" alt="Showcase book 2" width={600} height={800} className="rounded-lg shadow-xl" data-ai-hint="book layout" />
             </CarouselItem>
-            <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+            <CarouselItem className="pl-4 md:basis-1/2 lg:basis-1/3">
             <Image src="https://picsum.photos/600/800" alt="Showcase book 3" width={600} height={800} className="rounded-lg shadow-xl" data-ai-hint="book cover design" />
             </CarouselItem>
-            <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+            <CarouselItem className="pl-4 md:basis-1/2 lg:basis-1/3">
                 <Image src="https://picsum.photos/600/800" alt="Showcase book 4" width={600} height={800} className="rounded-lg shadow-xl" data-ai-hint="elegant book" />
             </CarouselItem>
-            <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+            <CarouselItem className="pl-4 md:basis-1/2 lg:basis-1/3">
             <Image src="https://picsum.photos/600/800" alt="Showcase book 5" width={600} height={800} className="rounded-lg shadow-xl" data-ai-hint="modern book" />
             </CarouselItem>
         </CarouselContent>

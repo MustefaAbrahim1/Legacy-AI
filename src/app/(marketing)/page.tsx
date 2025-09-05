@@ -26,7 +26,7 @@ const features = [
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col">
+    <>
       {/* Hero Section */}
       <section className="w-full bg-accent/50">
         <div className="container grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-4rem)] py-20 lg:py-0">
@@ -82,7 +82,7 @@ export default function HomePage() {
       </section>
 
       {/* Showcase Section */}
-      <section id="showcase" className="w-full py-24 bg-accent/50 overflow-hidden">
+      <section id="showcase" className="w-full py-24 bg-accent/50">
         <div className="container">
           <div className="text-center space-y-4 mb-16">
             <h2 className="font-headline text-3xl md:text-4xl font-bold">Beautiful Designs, Enduring Tributes</h2>
@@ -90,12 +90,12 @@ export default function HomePage() {
               Explore a collection of our beautifully crafted memorial books.
             </p>
           </div>
-           <ShowcaseCarousel />
+          <ShowcaseCarousel />
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section id="feedback" className="w-full py-24 bg-background overflow-hidden">
+      <section id="feedback" className="w-full py-24 bg-background">
         <div className="container">
           <div className="text-center space-y-4 mb-16">
             <h2 className="font-headline text-3xl md:text-4xl font-bold">Loved by Families Like Yours</h2>
@@ -131,6 +131,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }

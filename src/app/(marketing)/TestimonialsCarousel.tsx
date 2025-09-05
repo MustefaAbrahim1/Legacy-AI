@@ -70,7 +70,7 @@ export function TestimonialsCarousel({ testimonials }: TestimonialsCarouselProps
         }}
         className="w-full max-w-sm sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl mx-auto"
       >
-        <CarouselContent className="-ml-4">
+        <CarouselContent>
           {testimonials.map((testimonial, index) => (
             <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
               <div className="p-1 h-full">
