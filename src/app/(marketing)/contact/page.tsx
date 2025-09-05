@@ -2,7 +2,7 @@ import ContactForm from './ContactForm';
 
 export default function ContactPage() {
   return (
-    <div className="container py-16 md:py-24">
+    <main className="container py-16 md:py-24">
       <div className="grid md:grid-cols-2 gap-16 items-center">
         <div className="space-y-4">
           <h1 className="font-headline text-4xl md:text-5xl font-bold">Contact Us</h1>
@@ -22,6 +22,6 @@ export default function ContactPage() {
           <ContactForm />
         </div>
       </div>
-    </div>
+    </main>
   );
 }

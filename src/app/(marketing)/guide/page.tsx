@@ -28,7 +28,7 @@ const steps = [
 
 export default function GuidePage() {
   return (
-    <div className="container py-16 md:py-24">
+    <main className="container py-16 md:py-24">
       <div className="text-center space-y-4 mb-16">
         <h1 className="font-headline text-4xl md:text-5xl font-bold">How Legacy AI Works</h1>
         <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -74,6 +74,6 @@ export default function GuidePage() {
           <Link href="/create">Get Started for Free</Link>
         </Button>
       </div>
-    </div>
+    </main>
   );
 }

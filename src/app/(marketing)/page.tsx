@@ -2,11 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { UploadCloud, Bot, SquarePen as Edit, Star } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { UploadCloud, Bot, SquarePen as Edit } from 'lucide-react';
 import { ShowcaseCarousel } from './ShowcaseCarousel';
-import { TestimonialsCarousel } from './TestimonialsCarousel';
+import { TestimonialsCarousel, testimonials } from './TestimonialsCarousel';
 
 const features = [
   {
@@ -26,54 +24,11 @@ const features = [
   },
 ];
 
-export const testimonials = [
-  {
-    name: 'Sarah L.',
-    plan: 'Advance',
-    avatar: 'SL',
-    image: 'https://picsum.photos/150/150',
-    imageHint: 'woman portrait',
-    feedback: "The AI writer captured my father's spirit perfectly. It was like it knew him. The process was so easy during a difficult time. The final book is something our family will treasure forever.",
-  },
-  {
-    name: 'Michael B.',
-    plan: 'Expert',
-    avatar: 'MB',
-    image: 'https://picsum.photos/150/150',
-    imageHint: 'man portrait',
-    feedback: "I was skeptical about an AI writing something so personal, but I was blown away. It took all our scattered stories and created a beautiful, cohesive narrative. The Expert plan was worth every penny for the extra design control.",
-  },
-  {
-    name: 'Jessica & Tom H.',
-    plan: 'Basic',
-    avatar: 'JH',
-    image: 'https://picsum.photos/150/150',
-    imageHint: 'couple portrait',
-    feedback: "We just wanted a simple, elegant way to remember our grandmother. The Basic plan was perfect. It gave us a wonderful starting point, and we were able to create a lovely tribute without much fuss.",
-  },
-  {
-    name: 'David R.',
-    plan: 'Advance',
-    avatar: 'DR',
-    image: 'https://picsum.photos/150/150',
-    imageHint: 'gentleman portrait',
-    feedback: "I'm not a writer, but I had so many stories about my wife. Legacy AI helped me organize them into a beautiful book that I could share with our children and grandchildren. The final product is professional and heartfelt.",
-  },
-  {
-    name: 'Emily P.',
-    plan: 'Expert',
-    avatar: 'EP',
-    image: 'https://picsum.photos/150/150',
-    imageHint: 'lady portrait',
-    feedback: "The one-on-one design consultation was fantastic. They helped me with the layout and photo selection, making the book even more special. It's a beautiful tribute to my sister.",
-  }
-];
-
 export default function HomePage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="bg-accent/50">
+      <section className="w-full bg-accent/50">
         <div className="container grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-4rem)] py-20 lg:py-0">
           <div className="space-y-6 fade-in">
             <h1 className="font-headline text-4xl md:text-6xl font-bold tracking-tight">
@@ -100,7 +55,7 @@ export default function HomePage() {
       </section>
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="py-24">
+      <section id="how-it-works" className="w-full py-24">
         <div className="container">
           <div className="text-center space-y-4 mb-16">
             <h2 className="font-headline text-3xl md:text-4xl font-bold">A Simple Process to a Lasting Tribute</h2>
@@ -127,7 +82,7 @@ export default function HomePage() {
       </section>
 
       {/* Showcase Section */}
-      <section id="showcase" className="py-24 bg-accent/50">
+      <section id="showcase" className="w-full py-24 bg-accent/50">
         <div className="container">
           <div className="text-center space-y-4 mb-16">
             <h2 className="font-headline text-3xl md:text-4xl font-bold">Beautiful Designs, Enduring Tributes</h2>
@@ -140,7 +95,7 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="feedback" className="py-24 bg-background overflow-hidden">
+      <section id="feedback" className="w-full py-24 bg-background overflow-hidden">
         <div className="container">
           <div className="text-center space-y-4 mb-16">
             <h2 className="font-headline text-3xl md:text-4xl font-bold">Loved by Families Like Yours</h2>
@@ -153,7 +108,7 @@ export default function HomePage() {
       </section>
 
       {/* Themes Section */}
-      <section className="py-24 bg-accent/50">
+      <section className="w-full py-24 bg-accent/50">
         <div className="container grid lg:grid-cols-2 gap-12 items-center">
           <div className="order-2 lg:order-1 fade-in">
             <Image
