@@ -2,17 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { UploadCloud, Bot, Edit, Star } from 'lucide-react';
+import { UploadCloud, Bot, SquarePen as Edit, Star } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
-import Autoplay from "embla-carousel-autoplay"
+import { ShowcaseCarousel } from './ShowcaseCarousel';
+import { TestimonialsCarousel } from './TestimonialsCarousel';
 
 const features = [
   {
@@ -32,7 +26,7 @@ const features = [
   },
 ];
 
-const testimonials = [
+export const testimonials = [
   {
     name: 'Sarah L.',
     plan: 'Advance',
@@ -141,39 +135,7 @@ export default function HomePage() {
               Explore a collection of our beautifully crafted memorial books.
             </p>
           </div>
-           <Carousel
-            plugins={[
-                Autoplay({
-                delay: 3000,
-                stopOnInteraction: true,
-                }),
-            ]}
-            opts={{
-              loop: true,
-              align: "start",
-            }}
-            className="w-full"
-          >
-            <CarouselContent>
-              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                 <Image src="https://picsum.photos/600/800" alt="Showcase book 1" width={600} height={800} className="rounded-lg shadow-xl" data-ai-hint="book design" />
-              </CarouselItem>
-              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                <Image src="https://picsum.photos/600/800" alt="Showcase book 2" width={600} height={800} className="rounded-lg shadow-xl" data-ai-hint="book layout" />
-              </CarouselItem>
-              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                <Image src="https://picsum.photos/600/800" alt="Showcase book 3" width={600} height={800} className="rounded-lg shadow-xl" data-ai-hint="book cover design" />
-              </CarouselItem>
-              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                 <Image src="https://picsum.photos/600/800" alt="Showcase book 4" width={600} height={800} className="rounded-lg shadow-xl" data-ai-hint="elegant book" />
-              </CarouselItem>
-              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                <Image src="https://picsum.photos/600/800" alt="Showcase book 5" width={600} height={800} className="rounded-lg shadow-xl" data-ai-hint="modern book" />
-              </CarouselItem>
-            </CarouselContent>
-            <CarouselPrevious className="hidden sm:flex" />
-            <CarouselNext className="hidden sm:flex" />
-          </Carousel>
+           <ShowcaseCarousel />
         </div>
       </section>
 
@@ -186,44 +148,7 @@ export default function HomePage() {
               See what others have created and hear about their experiences.
             </p>
           </div>
-          <Carousel
-            opts={{
-              loop: true,
-              align: "start",
-            }}
-            className="w-full max-w-sm sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl mx-auto"
-          >
-            <CarouselContent className="-ml-4">
-              {testimonials.map((testimonial, index) => (
-                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                  <div className="p-1 h-full">
-                    <Card className="flex flex-col h-full">
-                      <CardContent className="pt-6 flex-grow flex flex-col">
-                        <div className="flex items-center mb-4">
-                          <Avatar className="h-12 w-12 mr-4">
-                            <AvatarImage src={testimonial.image} alt={testimonial.name} data-ai-hint={testimonial.imageHint} />
-                            <AvatarFallback>{testimonial.avatar}</AvatarFallback>
-                          </Avatar>
-                          <div>
-                            <h3 className="font-semibold">{testimonial.name}</h3>
-                            <Badge variant="secondary">Used {testimonial.plan} Plan</Badge>
-                          </div>
-                        </div>
-                        <div className="flex mb-2">
-                          {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />)}
-                        </div>
-                        <blockquote className="text-muted-foreground italic border-l-2 pl-4 flex-grow">
-                          "{testimonial.feedback}"
-                        </blockquote>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden sm:flex" />
-            <CarouselNext className="hidden sm:flex" />
-          </Carousel>
+          <TestimonialsCarousel testimonials={testimonials} />
         </div>
       </section>
 
