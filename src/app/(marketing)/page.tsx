@@ -82,7 +82,7 @@ export default function HomePage() {
       </section>
 
       {/* Showcase Section */}
-      <section id="showcase" className="w-full py-24 bg-accent/50">
+      <section id="showcase" className="w-full py-24 bg-accent/50 overflow-hidden">
         <div className="container">
           <div className="text-center space-y-4 mb-16">
             <h2 className="font-headline text-3xl md:text-4xl font-bold">Beautiful Designs, Enduring Tributes</h2>
