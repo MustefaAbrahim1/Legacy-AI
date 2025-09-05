@@ -13,11 +13,14 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/how-it-works', label: 'How It Works' },
   { href: '/pricing', label: 'Pricing' },
+  { href: '/#showcase', label: 'Showcase' },
   { href: '/contact', label: 'Contact Us' },
 ];
 
 export function Header() {
   const pathname = usePathname();
+
+  const isShowcase = pathname + (typeof window !== 'undefined' ? window.location.hash : '') === '/#showcase';
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -33,7 +36,7 @@ export function Header() {
                 href={link.href}
                 className={cn(
                   'transition-colors hover:text-foreground/80',
-                  pathname === link.href ? 'text-foreground' : 'text-foreground/60'
+                  (pathname === link.href || (link.href === '/#showcase' && isShowcase)) ? 'text-foreground' : 'text-foreground/60'
                 )}
               >
                 {link.label}
@@ -74,7 +77,7 @@ export function Header() {
                     href={link.href}
                     className={cn(
                       'text-lg font-medium transition-colors hover:text-primary',
-                      pathname === link.href ? 'text-foreground' : 'text-muted-foreground'
+                      (pathname === link.href || (link.href === '/#showcase' && isShowcase)) ? 'text-foreground' : 'text-muted-foreground'
                     )}
                   >
                     {link.label}
